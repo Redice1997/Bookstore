@@ -8,16 +8,16 @@ using Bookstore;
 namespace Store.Web.Controllers
 {
     public class SearchController : Controller
-    {
-        private readonly IBookRepository bookRepository;
+    {        
+        private readonly SearchService searchService;
 
-        public SearchController(IBookRepository bookRepository)
+        public SearchController(SearchService searchService)
         {
-            this.bookRepository = bookRepository;
+            this.searchService = searchService;
         }
         public IActionResult Index(string query)
         {
-            var books = bookRepository.GetAllByTitle(query);
+            var books = searchService.GetAllByQuery(query);
             return View(books);
         }
     }
