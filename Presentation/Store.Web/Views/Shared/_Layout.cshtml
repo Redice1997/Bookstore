@@ -27,7 +27,14 @@
                     }
                     else
                     {
-                        @:Товаров @cart.Items.Count на сумму @cart.Amount
+                        int count = 0;
+
+                        foreach (var item in cart.Items)
+                        {
+                            count += item.Value;
+                        }
+
+                        @:Товаров @count на сумму @cart.Amount
                     }
                 }
             </span>           
