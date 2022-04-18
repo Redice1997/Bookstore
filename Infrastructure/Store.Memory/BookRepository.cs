@@ -26,6 +26,9 @@ namespace Store.Memory
 
         public Book[] GetAllByTitleOrAuthor(string query)
         {
+            if (string.IsNullOrEmpty(query))
+                return books;
+
             return books.Where(b => b.Author.Contains(query)
                                  || b.Title.Contains(query))
                         .ToArray();
