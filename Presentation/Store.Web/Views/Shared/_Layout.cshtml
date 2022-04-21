@@ -16,25 +16,14 @@
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Поиск</button>
             </form>
             <span class="navbar-text ml-auto">
-                @{ 
-                    Cart cart;
-                    if (!Context.Session.TryGetCart(out cart))
-                        cart = new Cart();
-
-                    if (cart.Items.Count == 0)
+                @{
+                    if (!Context.Session.TryGetCart(out Cart cart) && cart.TotalCount > 0)
                     {
-                        @:Корзина пуста
+                        <a href="">Товаров @cart.TotalCount на сумму @cart.TotalPrice$</a>
                     }
                     else
                     {
-                        int count = 0;
-
-                        foreach (var item in cart.Items)
-                        {
-                            count += item.Value;
-                        }
-
-                        @:Товаров @count на сумму @cart.Amount
+                        @:Корзина пуста
                     }
                 }
             </span>           
