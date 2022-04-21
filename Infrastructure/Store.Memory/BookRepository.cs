@@ -9,7 +9,9 @@ namespace Store.Memory
         private readonly Book[] books = new[]
         {
             new Book(1, "ISBN 12557-98445", "D. Knuth", "Art Of Programming, Vol. 1", 
-                    "This volume begins with basic programming concepts and techniques",
+                    "This volume begins with basic programming concepts and techniques, then focuses more particularly on " +
+                    "structures the representation of information inside a computer, the structural relationships between " +
+                    "data elements and how to deal with them efficiently.",
                     7.19m),
             new Book(2, "ISBN 12557-98446", "M. Fowler", "Refactoring", 
                     "As the application of object technology--particulary the Java", 
