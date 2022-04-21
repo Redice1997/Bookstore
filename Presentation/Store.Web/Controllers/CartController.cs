@@ -19,7 +19,7 @@ namespace Store.Web.Controllers
 
             Order order;
             Cart cart;
-            if (!HttpContext.Session.TryGetCart(out cart))
+            if (HttpContext.Session.TryGetCart(out cart))
             {
                 order = orderRepository.GetById(cart.OrderId);
             }

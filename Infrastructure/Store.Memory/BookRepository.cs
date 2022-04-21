@@ -14,7 +14,8 @@ namespace Store.Memory
                     "data elements and how to deal with them efficiently.",
                     7.19m),
             new Book(2, "ISBN 12557-98446", "M. Fowler", "Refactoring", 
-                    "As the application of object technology--particulary the Java", 
+                    "As the application of object technology--particulary the Java programming language--has become " +
+                    "commonplace. a new problem has emerged to confront the software development community.", 
                     12.45m),
             new Book(3, "ISBN 12557-98447", "B. Kernighan, D. Ritchie", "C Programming Language", 
                     "Known as the bible of C, this classic bestseller introduces the", 
