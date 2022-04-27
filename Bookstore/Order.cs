@@ -50,5 +50,18 @@ namespace Bookstore
                 items.Add(new OrderItem(book.Id, item.Count + count, book.Price));
             }
         }
+
+        public void RemoveItem(Book book)
+        {
+            if (book == null)
+                throw new ArgumentNullException(nameof(book));
+
+            int index = items.FindIndex(item => item.BookId == book.Id);
+
+            if (index == -1)
+                throw new InvalidOperationException("Order does not contain specified book.");
+
+
+        }
     }
 }
