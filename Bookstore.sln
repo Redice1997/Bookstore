@@ -15,7 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentatio
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Store.Web", "Presentation\Store.Web\Store.Web.csproj", "{73E33DDA-22EC-4D10-9BCB-1FC4241EAC33}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Tests", "Domain\Store.Tests\Store.Tests.csproj", "{3476E93D-732C-42F3-97F1-068AAC826ABF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Store.Tests", "Domain\Store.Tests\Store.Tests.csproj", "{3476E93D-732C-42F3-97F1-068AAC826ABF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

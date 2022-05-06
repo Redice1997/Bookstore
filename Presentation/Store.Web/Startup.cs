@@ -10,6 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Bookstore;
 using Store.Memory;
+using Bookstore.Messages;
 
 namespace Store.Web
 {
@@ -35,7 +36,9 @@ namespace Store.Web
             });
             services.AddSingleton<IBookRepository, BookRepository>();
             services.AddSingleton<IOrderRepository, OrderRepository>();
+            services.AddSingleton<INotificationService, DebugNotificationService>();
             services.AddSingleton<SearchService>();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
