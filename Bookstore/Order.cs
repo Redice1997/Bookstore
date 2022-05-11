@@ -6,13 +6,15 @@ namespace Bookstore
 {
     public class Order
     {
-        public int Id { get; }
+        public int Id { get; } 
+        public string CellPhone { get; set; }
+        public OrderDelivery Delivery { get; set; }
 
         private List<OrderItem> items;
         public IReadOnlyCollection<OrderItem> Items => items;
         public int TotalCount => items.Sum(item => item.Count);
 
-        public decimal TotalPrice => items.Sum(item => item.Price * item.Count);
+        public decimal TotalPrice => items.Sum(item => item.Price * item.Count) + Delivery?.Amount ?? 0m;
 
         public Order(int id, IEnumerable<OrderItem> items)
         {
