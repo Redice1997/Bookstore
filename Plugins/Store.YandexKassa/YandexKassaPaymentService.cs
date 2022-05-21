@@ -9,7 +9,7 @@ namespace Store.YandexKassa
     {
         public string UniqueCode => "YandexKassa";
 
-        public string Title => "Оплата бонковской картой";
+        public string Title => "Оплата банковской картой";
 
         public string GetUri => "/YandexKassa/";
 

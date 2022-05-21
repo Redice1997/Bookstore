@@ -7,6 +7,7 @@ using Bookstore.Messages;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using Bookstore.Contractors;
+using Store.Web.Contractors;
 
 namespace Store.Web.Controllers
 {
@@ -16,18 +17,21 @@ namespace Store.Web.Controllers
         private readonly IOrderRepository orderRepository;
         private readonly IEnumerable<IDeliveryService> deliveryServices;
         private readonly IEnumerable<IPaymentService> paymentServices;
+        private readonly IEnumerable<IWebContractorService> webContractorServices;
         private readonly INotificationService notificationService;
 
         public OrderController(IBookRepository bookRepository, 
                                IOrderRepository orderRepository,
                                IEnumerable<IDeliveryService> deliveryServices,
                                IEnumerable<IPaymentService> paymentServices,
+                               IEnumerable<IWebContractorService> webContractorServices,
                                INotificationService notificationService)
         {
             this.bookRepository = bookRepository;
             this.orderRepository = orderRepository;
             this.deliveryServices = deliveryServices;
             this.paymentServices = paymentServices;
+            this.webContractorServices = webContractorServices;
             this.notificationService = notificationService;
         }
         [HttpGet]
@@ -248,10 +252,12 @@ namespace Store.Web.Controllers
         public IActionResult StartPayment(int id, string uniqueCode)
         {
             var paymentService = paymentServices.Single(service => service.UniqueCode == uniqueCode);
-
             var order = orderRepository.GetById(id);
-
             var form = paymentService.CreateForm(order);
+
+            var webContractorService = webContractorServices.SingleOrDefault(service => service.UniqueCode == uniqueCode);
+            if (webContractorService != null)            
+                return Redirect(webContractorService.GetUri);
 
             return View("PaymentStep", form);
         }
@@ -273,6 +279,13 @@ namespace Store.Web.Controllers
             }
 
             return View("PaymentStep", form);
+        }
+
+        public IActionResult Finish()
+        {
+            HttpContext.Session.RemoveCart();
+
+            return View();
         }
     }
 }
