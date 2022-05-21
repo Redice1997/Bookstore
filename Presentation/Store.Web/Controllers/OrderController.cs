@@ -275,7 +275,9 @@ namespace Store.Web.Controllers
                 order.Payment = paymentService.GetPayment(form);
                 orderRepository.Update(order);
 
-                return View("Finish");
+                HttpContext.Session.RemoveCart();
+
+                return View("Finish");                
             }
 
             return View("PaymentStep", form);
