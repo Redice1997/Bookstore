@@ -1,17 +1,15 @@
+using Bookstore;
+using Bookstore.Contractors;
+using Bookstore.Messages;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Bookstore;
 using Store.Memory;
-using Bookstore.Messages;
-using Bookstore.Contractors;
+using Store.Web.Contractors;
+using Store.YandexKassa;
+using System;
 
 namespace Store.Web
 {
@@ -39,8 +37,11 @@ namespace Store.Web
             services.AddSingleton<IOrderRepository, OrderRepository>();
             services.AddSingleton<INotificationService, DebugNotificationService>();
             services.AddSingleton<IDeliveryService, PostamateDeliveryService>();
+            services.AddSingleton<IPaymentService, CashPaymentService>();
+            services.AddSingleton<IPaymentService, YandexKassaPaymentService>();
+            services.AddSingleton<IWebContractorService, YandexKassaPaymentService>();
             services.AddSingleton<SearchService>();
-            
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -70,6 +71,11 @@ namespace Store.Web
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                endpoints.MapAreaControllerRoute(
+                    name: "yandex.kassa",
+                    areaName: "YandexKassa",
+                    pattern: "YandexKassa/{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
