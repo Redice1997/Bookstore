@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Store.Tests", "Domain\Store
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Store.Web.Contractors", "Presentation\Store.Web.Contractors\Store.Web.Contractors.csproj", "{40536E7A-931A-4C2B-8A2D-230DE635ECC3}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PluginsOld", "PluginsOld", "{05E20B18-EB3E-4AAE-AFB7-40244DD868CD}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{05E20B18-EB3E-4AAE-AFB7-40244DD868CD}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Store.YandexKassa", "Plugins\Store.YandexKassa\Store.YandexKassa.csproj", "{4E372961-D094-4D6C-9C56-5D0FBDB792BD}"
 EndProject

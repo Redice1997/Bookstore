@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Store.YandexKassa
 {
-    class YandexKassaPaymentService : IPaymentService, IWebContractorService
+    public class YandexKassaPaymentService : IPaymentService, IWebContractorService
     {
         public string UniqueCode => "YandexKassa";
 

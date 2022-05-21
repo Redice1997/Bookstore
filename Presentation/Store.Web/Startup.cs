@@ -7,6 +7,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Store.Memory;
+using Store.Web.Contractors;
+using Store.YandexKassa;
 using System;
 
 namespace Store.Web
@@ -36,7 +38,8 @@ namespace Store.Web
             services.AddSingleton<INotificationService, DebugNotificationService>();
             services.AddSingleton<IDeliveryService, PostamateDeliveryService>();
             services.AddSingleton<IPaymentService, CashPaymentService>();
-            //services.AddSingleton<IPaymentService, YandexKassaPaymentService>();
+            services.AddSingleton<IPaymentService, YandexKassaPaymentService>();
+            services.AddSingleton<IWebContractorService, YandexKassaPaymentService>();
             services.AddSingleton<SearchService>();
 
         }
